@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+*{
+     font-family: 'Russo One', sans-serif;
+}
+.card-container{
+     /* display: flex; */
+}
+.card{
+     display: flex;
+     /* justify-content: center; */
+     align-items: center;
+     flex-wrap: wrap;
+     
+}
+.card > div {
+     margin: 50px;
+}
+.card-img img{
+     border: 1px solid black;
+     width: 120px;
+     height: 120px;
+     border-radius: 50%;
+     margin-top: 30px;
+}
+.card-contents-text p{
+     color: grey;
+     margin-left:15px;
+}
+
+.search{
+     width: 90%;
+     height: 50px;
+     outline: none;
+     border: none;
+     overflow: hidden;
+     margin-left: 10px;
+}
