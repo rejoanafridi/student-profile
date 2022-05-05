@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Card.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
-const CardDetails = ({ student }) => {
-	// const data = {
-	// 	tag: "tag 1",
-	// };
-	// const misle = { ...student, ...data };
-	// console.log(misle);
+const CardDetails = ({ student, allstudent, setStudent }) => {
 	const [visible, setVisible] = useState(false);
 
-	const [tag, setTag] = useState({...student});
-	console.log(tag);
-
-	const [tagbtn, setTagBtn] = useState(false);
-
-	const { id, city, company, email, pic, skill, grades } = student;
+	const { city, company, email, pic, skill, grades } = student;
 	const avg = (grades) => {
 		let sum = 0;
 
@@ -35,11 +25,32 @@ const CardDetails = ({ student }) => {
 	const handleChange = (event) => {
 		if (event.key === "Enter") {
 			event.preventDefault();
-			setTagBtn(true);
-			setTag(event.target.value)
+
+			let newArray = [...allstudent];
+			for (let i = 0; i < newArray.length; i++) {
+				if (newArray[i].id === student.id) {
+					if (newArray[i].tag) {
+						newArray[i].tag = [...newArray[i].tag, event.target.value];
+						break;
+					} else {
+						newArray[i].tag = [event.target.value];
+						break;
+					}
+					// let updatedStudent = {...newArray[i]};
+				}
+			}
+			localStorage.setItem("newArray", JSON.stringify(newArray));
+			const localData = localStorage.getItem("newArray");
+			const localStudentData = JSON.parse(localData);
+
+			setStudent(localStudentData);
+
+			// console.log(newArray);
 			event.target.value = "";
 		}
 	};
+
+	// console.log(localStudentData);
 
 	return (
 		<div>
@@ -57,11 +68,6 @@ const CardDetails = ({ student }) => {
 							<p> {company} </p>
 							<p>Skill: {skill} </p>
 							<p> Average : {avg(grades)}%</p>
-							{tagbtn ? <button className="tagbtn">{tag}</button> : ""}
-
-							<div className="new-tag">
-								<input placeholder="enter a tag" onKeyPress={handleChange} />
-							</div>
 							{visible
 								? grades.map((grade, idx) => (
 										<p>
@@ -69,6 +75,16 @@ const CardDetails = ({ student }) => {
 										</p>
 								  ))
 								: ""}
+
+							{student.tag
+								? student.tag.map((itm) => (
+										<button className="tagbtn">{itm}</button>
+								  ))
+								: ""}
+
+							<div className="new-tag">
+								<input placeholder="enter a tag" onKeyPress={handleChange} />
+							</div>
 						</div>
 					</div>
 				</div>
