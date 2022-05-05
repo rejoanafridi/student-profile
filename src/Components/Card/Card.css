@@ -1,37 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-*{
-     font-family: 'Russo One', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+* {
+	font-family: "Russo One", sans-serif;
 }
-.card-container{
-     /* display: flex; */
+.card-container {
+	/* display: flex; */
 }
-.card{
-     display: flex;
-     /* justify-content: center; */
-     align-items: center;
-     flex-wrap: wrap;
-     
+.card {
+	display: flex;
+	justify-content: space-between;
+
+	flex-wrap: wrap;
 }
 .card > div {
-     margin: 50px;
+	margin: 50px;
 }
-.card-img img{
-     border: 1px solid black;
-     width: 120px;
-     height: 120px;
-     border-radius: 50%;
-     margin-top: 30px;
+.card-img img {
+	border: 1px solid black;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	margin-top: 50px;
 }
-.card-contents-text p{
-     color: grey;
-     margin-left:15px;
+.card-contents {
+	display: flex;
+	/* flex-direction: row; */
+}
+.card-items {
+	margin-left: 50px;
+}
+.card-contents-titles h1 {
+	font-size: 43px;
+}
+.card-contents-text{
+	margin-left: 15px;
+}
+.card-contents-text p {
+	color: grey;
+	
 }
 
-.search{
-     width: 90%;
-     height: 50px;
-     outline: none;
-     border: none;
-     overflow: hidden;
-     margin-left: 10px;
+.search {
+	width: 90%;
+	height: 50px;
+	outline: none;
+	border: none;
+	overflow: hidden;
+	margin-left: 10px;
+}
+
+.new-tag input{
+	outline: none;
+	border: none;
+	border-bottom: .5px solid gray;
+
+	padding: 10px 0px;
+	font-size: 20px 
+}
+
+.plus-minus-icons a {
+	font-size: 35px;
+	padding-top: 23px;
+	color: gray;
+}
+
+.tagbtn{
+	background: #d2cdcd;
+	color: black;
+	padding: 8px;
+	border-radius: 4px;
+
 }
