@@ -50,6 +50,7 @@ const CardDetails = ({ student, allstudent, setStudent }) => {
 		}
 	};
 
+
 	// console.log(localStudentData);
 
 	return (
@@ -75,12 +76,9 @@ const CardDetails = ({ student, allstudent, setStudent }) => {
 										</p>
 								  ))
 								: ""}
+							{student.tag ? student.tag.map(itm => <button className="tagbtn">{itm}</button>):""}
 
-							{student.tag
-								? student.tag.map((itm) => (
-										<button className="tagbtn">{itm}</button>
-								  ))
-								: ""}
+					
 
 							<div className="new-tag">
 								<input placeholder="enter a tag" onKeyPress={handleChange} />

@@ -6,6 +6,10 @@ import Search from "../Search/Search";
 
 const Card = () => {
 	const [student, setStudent] = useState([]);
+
+	const localData = localStorage.getItem("newArray");
+	const localStudentData = JSON.parse(localData);
+
 	const [search, setSearch] = useState("");
 	// search by tag
 	const [searchTag, setSearchTag] = useState("");
@@ -14,16 +18,20 @@ const Card = () => {
 	const searchByTag = (e) => {
 		setSearchTag(e.target.value);
 	};
+	const searchTagName = () => {
+		
+	};
+
 
 	// console.log(student);
 	const searchByName = (e) => {
 		setSearch(e.target.value);
 	};
-	const searchName = student.filter((item) => {
+	const searchName = localStudentData.filter((item) => {
 		// const obj = Object.assign({}, item.tag);
 		// console.log(obj);
-	
-		if (item.city.toLowerCase().startsWith(search.toLowerCase())) {
+
+		if (item.city.toLowerCase().includes(search.toLowerCase())) {
 			return item;
 		}
 	});
