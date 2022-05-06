@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Card.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
 const CardDetails = ({ student, allstudent, setStudent }) => {
@@ -36,7 +36,6 @@ const CardDetails = ({ student, allstudent, setStudent }) => {
 						newArray[i].tag = [event.target.value];
 						break;
 					}
-					// let updatedStudent = {...newArray[i]};
 				}
 			}
 			localStorage.setItem("newArray", JSON.stringify(newArray));
@@ -49,7 +48,6 @@ const CardDetails = ({ student, allstudent, setStudent }) => {
 			event.target.value = "";
 		}
 	};
-
 
 	// console.log(localStudentData);
 
@@ -68,17 +66,20 @@ const CardDetails = ({ student, allstudent, setStudent }) => {
 							<p>Email: {email} </p>
 							<p> {company} </p>
 							<p>Skill: {skill} </p>
-							<p> Average : {avg(grades)}%</p>
+							<p> Average : {avg(grades)}% </p>
+
 							{visible
 								? grades.map((grade, idx) => (
 										<p>
-											Test {idx + 1}: {grade}%
+											Test {idx + 1}: <span className="span"> {grade}% </span>
 										</p>
 								  ))
 								: ""}
-							{student.tag ? student.tag.map(itm => <button className="tagbtn">{itm}</button>):""}
-
-					
+							{student.tag
+								? student.tag.map((itm,id) => (
+										<button key={id} className="tagbtn">{itm}</button>
+								  ))
+								: ""}
 
 							<div className="new-tag">
 								<input placeholder="enter a tag" onKeyPress={handleChange} />

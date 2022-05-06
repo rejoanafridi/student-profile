@@ -2,8 +2,11 @@
 * {
 	font-family: "Russo One", sans-serif;
 }
-.card-container {
-	/* display: flex; */
+.search-sticky{
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	background: white;
 }
 .card {
 	display: flex;
@@ -33,6 +36,9 @@
 }
 .card-contents-text {
 	margin-left: 15px;
+}
+.span {
+	margin-left: 25px;
 }
 .card-contents-text p {
 	color: grey;
@@ -68,11 +74,11 @@
 	padding: 8px;
 	border-radius: 4px;
 	margin: 0px 5px;
-	
+
 	border: none;
 }
 
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
 	.card > div {
 		margin: 34px;
 	}
@@ -97,14 +103,12 @@
 		font-size: 15px;
 	}
 	.plus-minus-icons a {
-		font-size: 35px;
+		font-size: 25px;
 		padding-top: 23px;
 		color: gray;
-		
-		
 	}
 }
-@media screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
 	.card > div {
 		margin: 3px;
 	}
@@ -114,10 +118,10 @@
 		/* display:none */
 	}
 	.card-items {
-		margin-left: 0px;
+		margin-left: 10px;
 	}
 	.card-contents-titles h1 {
-		font-size: 22px;
+		font-size: 23px;
 	}
 	.card-contents-text {
 		margin-left: 0px;
@@ -126,16 +130,38 @@
 		color: grey;
 		font-size: 14px;
 	}
-	.new-tag input {
-		font-size: 13px;
-	}
+
 	.plus-minus-icons a {
-		font-size: 35px;
+		font-size: 25px;
 		padding-top: 28px;
 		color: gray;
-		
-		
 	}
 }
-@media screen and (max-width: 1024px) {
+@media only screen and (min-width: 1024px){
+	.card > div {
+		margin: 54px;
+	}
+	.card-contents {
+		/* display: flex; */
+		flex-direction: row;
+	}
+	.card-items {
+		margin-left: 50px;
+	}
+	.card-contents-titles h1 {
+		font-size: 43px;
+	}
+	.card-contents-text {
+		margin-left: 15px;
+	}
+	.card-contents-text p {
+		color: grey;
+		font-size: 20px;
+	}
+
+	.plus-minus-icons a {
+		font-size: 35px;
+		padding-top: 23px;
+		color: gray;
+	}
 }
