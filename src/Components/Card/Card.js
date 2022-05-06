@@ -6,34 +6,47 @@ import Search from "../Search/Search";
 
 const Card = () => {
 	const [student, setStudent] = useState([]);
-
+	console.log(student);
+	// local storage da
 	const localData = localStorage.getItem("newArray");
 	const localStudentData = JSON.parse(localData);
+
+	const [searchType, setSearchType] = useState(true);
 
 	const [search, setSearch] = useState("");
 	// search by tag
 	const [searchTag, setSearchTag] = useState("");
-	console.log(searchTag);
+	// console.log(searchTag);
 	// search by tag
 	const searchByTag = (e) => {
+		setSearchType(false);
 		setSearchTag(e.target.value);
 	};
-	const searchTagName = () => {
-		
-	};
-
 
 	// console.log(student);
 	const searchByName = (e) => {
+		setSearchType(true);
 		setSearch(e.target.value);
 	};
-	const searchName = localStudentData.filter((item) => {
-		// const obj = Object.assign({}, item.tag);
-		// console.log(obj);
 
+	const searchName = localStudentData.filter((item) => {
 		if (item.city.toLowerCase().includes(search.toLowerCase())) {
 			return item;
 		}
+	});
+
+	const searchTags = localStudentData.filter((item) => {
+		if(searchTag === ''){
+			return item
+		}
+		if(item.tag){
+			for (let singleTag of item.tag) {
+				if (singleTag.toLowerCase().includes(searchTag.toLowerCase())) {
+					return item;
+				}
+			}
+		}
+		
 	});
 
 	useEffect(() => {
@@ -67,14 +80,24 @@ const Card = () => {
 					/>
 					<hr />
 				</div>
-				{searchName.map((item) => (
-					<CardDetails
-						key={item.id}
-						student={item}
-						allstudent={student}
-						setStudent={setStudent}
-					></CardDetails>
-				))}
+				{searchType
+					? searchName.map((item) => (
+							<CardDetails
+								key={item.id}
+								student={item}
+								allstudent={student}
+								setStudent={setStudent}
+							></CardDetails>
+					  ))
+					: searchTags.map((item) => (
+							<CardDetails
+								key={item.id}
+								student={item}
+								allstudent={student}
+								setStudent={setStudent}
+							></CardDetails>
+					  ))}
+				{}
 			</div>
 		</div>
 	);
